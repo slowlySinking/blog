@@ -5,7 +5,17 @@ app:
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation
+    prefix:   /{_locale}
+    requirements:
+        _locale: '%app_locales%'
+    defaults:
+        _locale: '%locale%'
 
 post:
     resource: "@PostBundle/Controller/"
     type:     annotation
+    prefix:   /{_locale}
+    requirements:
+        _locale: '%app_locales%'
+    defaults:
+        _locale: '%locale%'
