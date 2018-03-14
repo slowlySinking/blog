@@ -1,4 +1,15 @@
 services:
-#    post.example:
-#        class: PostBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+#   Fixtures
+    PostBundle\DataFixtures\ORM\LoadTagData:
+        tags: ['doctrine.fixture.orm']
+
+    PostBundle\DataFixtures\ORM\LoadCommentData:
+        tags: ['doctrine.fixture.orm']
+
+    PostBundle\DataFixtures\ORM\LoadPostData:
+        arguments: ['@slugger']
+        tags: ['doctrine.fixture.orm']
+
+#   Utils
+    slugger:
+        class: 'PostBundle\Utils\Slugger'

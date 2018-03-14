@@ -1,5 +1,10 @@
 services:
+#   Controllers
     UserBundle\Controller\SecurityController:
         bind:
             $authUtils: '@security.authentication_utils'
         tags: ['controller.service_arguments']
+
+#   Fixtures
+    UserBundle\DataFixtures\ORM\LoadUserData:
+        tags: ['doctrine.fixture.orm']
