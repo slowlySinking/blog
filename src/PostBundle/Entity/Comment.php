@@ -50,7 +50,7 @@ class Comment
      * @var Post
      *
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
-     * @ORM\JoinColumn(name="post_in", referencedColumnName="id", onDelete="cascade")
+     * @ORM\JoinColumn(name="post_id", referencedColumnName="id", onDelete="cascade")
      */
     private $post;
 

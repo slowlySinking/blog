@@ -13,3 +13,6 @@ services:
 #   Utils
     slugger:
         class: 'PostBundle\Utils\Slugger'
+
+    markdown:
+        class: 'PostBundle\Utils\Markdown'

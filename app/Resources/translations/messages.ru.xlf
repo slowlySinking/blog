@@ -2,10 +2,37 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="ru" datatype="plaintext" original="file.ext">
         <body>
-            <!--<trans-unit id="note">-->
-                <!--<source>note</source>-->
-                <!--<target>ПРИМЕЧАНИЕ</target>-->
-            <!--</trans-unit>-->
+            <!-- menu -->
+            <trans-unit id="menu.toggle_nav">
+                <source>menu.toggle_nav</source>
+                <target>Переключить навигацию</target>
+            </trans-unit>
+            <trans-unit id="menu.choose_language">
+                <source>menu.choose_language</source>
+                <target>Выбрать язык</target>
+            </trans-unit>
+
+            <!-- titles -->
+            <trans-unit id="title.login">
+                <source>title.login</source>
+                <target>Авторизация</target>
+            </trans-unit>
+
+            <!-- labels -->
+            <trans-unit id="label.username">
+                <source>label.username</source>
+                <target>Логин</target>
+            </trans-unit>
+            <trans-unit id="label.password">
+                <source>label.password</source>
+                <target>Пароль</target>
+            </trans-unit>
+
+            <!-- actions -->
+            <trans-unit id="action.sign_in">
+                <source>action.sign_in</source>
+                <target>Войти</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
