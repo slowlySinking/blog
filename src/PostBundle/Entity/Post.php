@@ -16,7 +16,7 @@ use UserBundle\Entity\User;
  */
 class Post
 {
-    const NUM_ITEMS = 10;
+    const NUM_ITEMS = 5;
 
     /**
      * Hook timestampable behavior
@@ -70,7 +70,7 @@ class Post
      *
      * @var Comment[]
      *
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="$post")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
      * @ORM\OrderBy({"updatedAt": "DESC"})
      */
     private $comments;

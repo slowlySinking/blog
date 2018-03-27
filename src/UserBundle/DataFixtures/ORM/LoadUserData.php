@@ -20,7 +20,7 @@ class LoadUserData extends Fixture implements OrderedFixtureInterface
     {
         $faker = Factory::create();
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $user = new User();
             $user->setFirstName($faker->title() . $faker->firstName());
             $user->setLastName($faker->lastName);

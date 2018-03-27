@@ -32,7 +32,7 @@ class LoadPostData extends Fixture implements OrderedFixtureInterface
     {
         $faker = Factory::create();
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $post = new Post();
             $post->setTitle($faker->sentence(3));
             $post->setSlug($this->slugger->sluggify($post->getTitle()));
@@ -40,7 +40,7 @@ class LoadPostData extends Fixture implements OrderedFixtureInterface
             $post->setSummary($faker->sentence(15));
 
             $post->addTag($this->getReference('tag_' . $i));
-            $post->addTag($this->getReference('tag_' . ($i + 5)));
+            $post->addTag($this->getReference('tag_' . ($i + 10)));
 
             $post->setUser($this->getReference('user_' . $i));
 

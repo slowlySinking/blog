@@ -17,6 +17,14 @@
                 <source>title.login</source>
                 <target>Авторизация</target>
             </trans-unit>
+            <trans-unit id="title.add_comment">
+                <source>title.add_comment</source>
+                <target>Добавить комментарий</target>
+            </trans-unit>
+            <trans-unit id="title.comment_error">
+                <source>title.comment_error</source>
+                <target>Произошла ошибка во время публикации вашего комментария</target>
+            </trans-unit>
 
             <!-- labels -->
             <trans-unit id="label.username">
@@ -27,11 +35,33 @@
                 <source>label.password</source>
                 <target>Пароль</target>
             </trans-unit>
+            <trans-unit id="label.content">
+                <source>label.content</source>
+                <target>Содержание</target>
+            </trans-unit>
 
             <!-- actions -->
             <trans-unit id="action.sign_in">
                 <source>action.sign_in</source>
                 <target>Войти</target>
+            </trans-unit>
+            <trans-unit id="action.publish_comment">
+                <source>action.publish_comment</source>
+                <target>Опубликовать комментарий</target>
+            </trans-unit>
+
+            <!-- posts -->
+            <trans-unit id="post.to_publish_a_comment">
+                <source>post.to_publish_a_comment</source>
+                <target>чтобы опубликовать комментарий</target>
+            </trans-unit>
+            <trans-unit id="post.num_comments">
+                <source>post.num_comments</source>
+                <target>%count% комментарий|%count% комментария|%count% комментариев</target>
+            </trans-unit>
+            <trans-unit id="post.commented_on">
+                <source>post.commented_on</source>
+                <target>прокомментировано</target>
             </trans-unit>
         </body>
     </file>

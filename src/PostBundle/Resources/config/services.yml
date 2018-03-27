@@ -1,4 +1,10 @@
 services:
+#   Controllers
+    PostBundle\Controller\CommentController:
+        bind:
+            $eventDispatcher: '@event_dispatcher'
+        tags: ['controller.service_arguments']
+
 #   Fixtures
     PostBundle\DataFixtures\ORM\LoadTagData:
         tags: ['doctrine.fixture.orm']
