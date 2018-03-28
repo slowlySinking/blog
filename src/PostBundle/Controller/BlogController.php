@@ -5,6 +5,7 @@ namespace PostBundle\Controller;
 use PostBundle\Entity\Post;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/blog")
@@ -39,5 +40,32 @@ class BlogController extends Controller
         return $this->render('blog/post_show.html.twig',[
             'post' => $post
         ]);
+    }
+
+    /**
+     * @Route("/search", name="blog_search")
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function searchAction(Request $request)
+    {
+        if (!$request->isXmlHttpRequest()) {
+            return $this->render('blog/search.html.twig');
+        }
+
+        $query = $request->query->get('search-input', '');
+        $posts = $this->getDoctrine()->getRepository(Post::class)->findBySearchQuery($query);
+
+        $results = [];
+        foreach ($posts as $post) {
+            $results[] = [
+                'title' => htmlspecialchars($post->getTitle()),
+                'summary' => htmlspecialchars($post->getSummary()),
+                'url' => $this->generateUrl('blog_post', ['slug' => $post->getSlug()])
+            ];
+        }
+
+        return $this->json($results);
     }
 }

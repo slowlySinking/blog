@@ -11,6 +11,10 @@
                 <source>menu.choose_language</source>
                 <target>Choose language</target>
             </trans-unit>
+            <trans-unit id="menu.search">
+                <source>menu.search</source>
+                <target>Search</target>
+            </trans-unit>
 
             <!-- titles -->
             <trans-unit id="title.login">
@@ -62,6 +66,10 @@
             <trans-unit id="post.commented_on">
                 <source>post.commented_on</source>
                 <target>commented on</target>
+            </trans-unit>
+            <trans-unit id="post.search_for">
+                <source>post.search_for</source>
+                <target>Search for...</target>
             </trans-unit>
         </body>
     </file>

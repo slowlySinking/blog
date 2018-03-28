@@ -39,4 +39,59 @@ class PostRepository extends EntityRepository
 
         return $paginator;
     }
+
+    /**
+     * @param $rowQuery
+     * @param int $limit
+     *
+     * @return array
+     */
+    public function findBySearchQuery($rowQuery, $limit = Post::NUM_ITEMS)
+    {
+        $query = $this->sanitizeSearchQuery($rowQuery);
+        $searchTerms = $this->extractSearchTerms($query);
+
+        if (0 === count($searchTerms)) {
+            return [];
+        }
+
+        $queryBuilder = $this->createQueryBuilder('p');
+
+        foreach ($searchTerms as $key => $term) {
+            $queryBuilder
+                ->orWhere('p.title LIKE :t_' . $key)
+                ->setParameter('t_' . $key, '%' . $term . '%' );
+        }
+
+        return $queryBuilder
+            ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @param $query
+     *
+     * @return mixed
+     */
+    private function sanitizeSearchQuery($query)
+    {
+        return preg_replace('/[^[:alnum:] ]/', '', trim(preg_replace('/[[:space:]]+/', ' ', $query)));
+        return $query;
+    }
+
+    /**
+     * @param $searchQuery
+     *
+     * @return array
+     */
+    private function extractSearchTerms($searchQuery)
+    {
+        $terms = array_unique(explode(' ', mb_strtolower($searchQuery)));
+
+        return array_filter($terms, function ($term) {
+            return 2 <= mb_strlen($term);
+        });
+    }
 }
