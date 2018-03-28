@@ -15,6 +15,10 @@
                 <source>menu.search</source>
                 <target>Поиск</target>
             </trans-unit>
+            <trans-unit id="menu.logout">
+                <source>menu.logout</source>
+                <target>Выйти</target>
+            </trans-unit>
 
             <!-- titles -->
             <trans-unit id="title.login">

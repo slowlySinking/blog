@@ -46,7 +46,7 @@ class BlogController extends Controller
      * @Route("/search", name="blog_search")
      *
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function searchAction(Request $request)
     {

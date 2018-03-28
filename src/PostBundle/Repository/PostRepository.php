@@ -78,7 +78,6 @@ class PostRepository extends EntityRepository
     private function sanitizeSearchQuery($query)
     {
         return preg_replace('/[^[:alnum:] ]/', '', trim(preg_replace('/[[:space:]]+/', ' ', $query)));
-        return $query;
     }
 
     /**
