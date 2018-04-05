@@ -29,18 +29,13 @@ class Tag
      */
     private $name;
 
-    /**
-     * Many Tags have Many Posts
-     *
-     * @var Post[]
-     *
-     * @ORM\ManyToMany(targetEntity="Post", mappedBy="tags")
-     */
-    private $posts;
 
-    public function __construct()
+    /**
+     * @return string
+     */
+    public function __toString()
     {
-        $this->posts = new ArrayCollection();
+        return $this->name;
     }
 
     /**
@@ -68,25 +63,6 @@ class Tag
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * @param Post $post
-     * @return $this
-     */
-    public function addPost(Post $post)
-    {
-        $this->posts->add($post);
-
-        return $this;
-    }
-
-    /**
-     * @return ArrayCollection|Post[]
-     */
-    public function getPosts()
-    {
-        return $this->posts;
     }
 }
 

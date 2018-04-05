@@ -80,7 +80,7 @@ class Post
      *
      * @var Tag[]
      *
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="posts")
+     * @ORM\ManyToMany(targetEntity="Tag", cascade={"persist"})
      * @ORM\JoinTable(name="posts_tags")
      * @ORM\OrderBy({"name": "ASC"})
      * @Assert\Count(max="4", maxMessage="post.too_much_tags")
@@ -213,8 +213,9 @@ class Post
      */
     public function addTag(Tag $tag)
     {
-        $this->tags->add($tag);
-        $tag->addPost($this);
+        if (!$this->tags->contains($tag)) {
+            $this->tags->add($tag);
+        }
 
         return $this;
     }
@@ -225,6 +226,14 @@ class Post
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * @param Tag $tag
+     */
+    public function removeTag(Tag $tag)
+    {
+        $this->tags->removeElement($tag);
     }
 
     /**

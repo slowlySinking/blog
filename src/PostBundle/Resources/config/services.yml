@@ -5,6 +5,11 @@ services:
             $eventDispatcher: '@event_dispatcher'
         tags: ['controller.service_arguments']
 
+    PostBundle\Controller\Admin\BlogController:
+        bind:
+            $slugger: '@slugger'
+        tags: ['controller.service_arguments']
+
 #   Fixtures
     PostBundle\DataFixtures\ORM\LoadTagData:
         tags: ['doctrine.fixture.orm']
@@ -22,3 +27,19 @@ services:
 
     markdown:
         class: 'PostBundle\Utils\Markdown'
+
+    moment.format.converter:
+        class: 'PostBundle\Utils\MomentFormatConverter'
+
+#   Form/Types
+    PostBundle\Form\Type\DateTimePickerType:
+        arguments: ["@moment.format.converter"]
+        tags: ['form.type']
+
+    PostBundle\Form\Type\TagsInputType:
+        arguments: ['@doctrine.orm.entity_manager']
+        tags: ['form.type']
+
+#   Voters
+    PostBundle\Security\PostVoter:
+        tags: ['security.voter']

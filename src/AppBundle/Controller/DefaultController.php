@@ -10,12 +10,16 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('security_login');
+        }
+
+        return $this->redirectToRoute('blog_index');
     }
 }
